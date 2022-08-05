@@ -2,9 +2,13 @@ import { shuffle } from "lodash";
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { openFullscreen, closeFullscreen } from "./fullscreen";
-import { movies } from "./movies";
-import { timesUpFr } from "./timesUpFr";
+// import { movies } from "./movies";
+// import { timesUpFr } from "./timesUpFr";
 import { gamewords } from "./gamewords";
+// import aTrue from "./true.mp3";
+import aTrue from "./true.m4a";
+// import aFalse from "./false.mp3";
+import aFalse from "./false.m4a";
 
 const parseGameWords = () => {
   const all = {};
@@ -14,7 +18,7 @@ const parseGameWords = () => {
     });
   });
 
-  console.log(all);
+
   return {
     gameWordsData: all,
     gameWordsNames: Object.keys(all).reduce(
@@ -27,14 +31,14 @@ const parseGameWords = () => {
 const { gameWordsData, gameWordsNames } = parseGameWords();
 
 const deckData = {
-  movies,
-  timesUpFr,
+  //movies,
+  //timesUpFr,
   ...gameWordsData,
 };
 
 const deckNames = {
-  movies: "movies",
-  timesUpFr: "time's up (fr)",
+  //movies: "movies",
+  //timesUpFr: "time's up (fr)",
   ...gameWordsNames,
 };
 
@@ -97,6 +101,11 @@ const Home = ({ start }) => {
 };
 
 const Results = ({ cards, end }) => {
+  var count =0;
+  cards.map(({ complete, name }) => {
+    count += complete ? 1: 0;
+  })
+
   return (
     <>
       <ul>
@@ -108,6 +117,7 @@ const Results = ({ cards, end }) => {
           );
         })}
       </ul>
+      <text style={{margin:25, color: "green", fontSize:30}}>TOTAL: {count}</text>
       <button onClick={end}>End</button>
     </>
   );
@@ -143,11 +153,25 @@ const Game = ({ end, cards }) => {
   const pass = () => {
     setPrevious([...previous, { name, complete: false }]);
     setCardIndex(cardIndex + 1);
+
+    // play sounds
+    const playAudio = () => {
+      new Audio(aFalse).play();
+    };
+
+    playAudio();
   };
 
   const accept = () => {
     setPrevious([...previous, { name, complete: true }]);
     setCardIndex(cardIndex + 1);
+
+    // play sounds
+    const playAudio = () => {
+      new Audio(aTrue).play();
+    };
+
+    playAudio();
   };
 
   if (done) {
