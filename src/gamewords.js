@@ -1,6 +1,6 @@
 // prettier-ignore
 export const gamewords = {
-    "Thức ăn": {
+    "All stars": {
         "Chọn": [
             "Gà tiềm thuốc bắc",
             "Giả cầy",

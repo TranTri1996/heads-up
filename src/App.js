@@ -91,7 +91,7 @@ const Home = ({ start }) => {
 
   return (
     <HomeContainer>
-      <h1>HEADS UP</h1>
+      <h1>HEADS UP (GFG Version)</h1>
       <Decks selected={deck} onChange={(e) => setDeck(e.target.value)} />
       <button onClick={openFullscreen}>Go full screen</button>
       <button onClick={closeFullscreen}>Close full screen</button>
@@ -207,11 +207,11 @@ const BaseButton = styled.button`
 `;
 
 const PassButton = styled(BaseButton)`
-  background: red;
+  background: #f47373;
 `;
 
 const AcceptButton = styled(BaseButton)`
-  background: green;
+  background: #37d67a;
 `;
 
 const MainContainer = styled.div`
@@ -219,6 +219,7 @@ const MainContainer = styled.div`
   flex-direction: column;
   display: flex;
   align-items: center;
+  background: #697689;
 `;
 
 const Clock = ({ time }) => {
@@ -228,18 +229,19 @@ const Clock = ({ time }) => {
 const UI = ({ pass, accept, card, time }) => {
   return (
     <UIContainer>
-      <PassButton onClick={pass}>Sai/Bỏ qua</PassButton>
+      <PassButton style={{fontSize:60}} onClick={pass}>Sai/Bỏ qua</PassButton>
       <MainContainer>
         <Clock time={time} />
         <Card name={card} />
+        <Clock time={time} />
       </MainContainer>
-      <AcceptButton onClick={accept}>Đúng</AcceptButton>
+      <AcceptButton style={{fontSize:60}} onClick={accept}>Đúng</AcceptButton>
     </UIContainer>
   );
 };
 
 const Card = ({ name }) => {
-  return <h1>{name}</h1>;
+  return <h1 style={{fontSize:60}}>{name}</h1>;
 };
 
 export default App;
