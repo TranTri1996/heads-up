@@ -228,12 +228,12 @@ const Clock = ({ time }) => {
 const UI = ({ pass, accept, card, time }) => {
   return (
     <UIContainer>
-      <PassButton onClick={pass}>Pass</PassButton>
+      <PassButton onClick={pass}>Sai/Bỏ qua</PassButton>
       <MainContainer>
         <Clock time={time} />
         <Card name={card} />
       </MainContainer>
-      <AcceptButton onClick={accept}>Got it!</AcceptButton>
+      <AcceptButton onClick={accept}>Đúng</AcceptButton>
     </UIContainer>
   );
 };
