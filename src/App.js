@@ -18,7 +18,6 @@ const parseGameWords = () => {
     });
   });
 
-
   return {
     gameWordsData: all,
     gameWordsNames: Object.keys(all).reduce(
@@ -101,10 +100,10 @@ const Home = ({ start }) => {
 };
 
 const Results = ({ cards, end }) => {
-  var count =0;
-  cards.map(({ complete, name }) => {
-    count += complete ? 1: 0;
-  })
+  var count = 0;
+  cards.forEach(({ complete, name }) => {
+    count += complete ? 1 : 0;
+  });
 
   return (
     <>
@@ -117,7 +116,9 @@ const Results = ({ cards, end }) => {
           );
         })}
       </ul>
-      <text style={{margin:25, color: "green", fontSize:30}}>TOTAL: {count}</text>
+      <text style={{ margin: 25, color: "green", fontSize: 30 }}>
+        TOTAL: {count}
+      </text>
       <button onClick={end}>End</button>
     </>
   );
@@ -229,19 +230,23 @@ const Clock = ({ time }) => {
 const UI = ({ pass, accept, card, time }) => {
   return (
     <UIContainer>
-      <PassButton style={{fontSize:60}} onClick={pass}>Sai/Bỏ qua</PassButton>
+      <PassButton style={{ fontSize: 60 }} onClick={pass}>
+        Sai/Bỏ qua
+      </PassButton>
       <MainContainer>
         <Clock time={time} />
         <Card name={card} />
         <Clock time={time} />
       </MainContainer>
-      <AcceptButton style={{fontSize:60}} onClick={accept}>Đúng</AcceptButton>
+      <AcceptButton style={{ fontSize: 60 }} onClick={accept}>
+        Đúng
+      </AcceptButton>
     </UIContainer>
   );
 };
 
 const Card = ({ name }) => {
-  return <h1 style={{fontSize:60}}>{name}</h1>;
+  return <h1 style={{ fontSize: 60 }}>{name}</h1>;
 };
 
 export default App;
